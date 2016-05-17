@@ -4,6 +4,12 @@ decanter-agent:
     - "4560:4560"
     links:
     - kafka
+decanter-server:
+    build: decanter-agent/.
+    ports:
+    - "8181:8181"
+    links:
+    - kafka
 kafka:
     image: spotify/kafka
     ports:

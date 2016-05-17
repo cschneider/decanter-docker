@@ -6,9 +6,6 @@
   <packaging>pom</packaging>
   <modules>
       <module>decanter-agent</module>
+      <module>decanter-server</module>
   </modules>
-  
-  
-  
-  
 </project>

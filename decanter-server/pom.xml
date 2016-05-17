@@ -6,7 +6,7 @@
         <artifactId>decanter-docker-parent</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
-    <artifactId>decanter-agent</artifactId>
+    <artifactId>decanter-server</artifactId>
     <packaging>pom</packaging>
 
     <properties>
@@ -23,7 +23,7 @@
         </dependency>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
-            <artifactId>static</artifactId>
+            <artifactId>framework</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
             <scope>compile</scope>
@@ -89,20 +89,23 @@
                 <configuration>
                     <javase>1.8</javase>
                     <startupFeatures>
-                    <!-- 
                         <startupFeature>jaas</startupFeature>
                         <startupFeature>bundle</startupFeature>
                         <startupFeature>config</startupFeature>
                         <startupFeature>log</startupFeature>
                         <startupFeature>shell</startupFeature>
                         <startupFeature>service</startupFeature>
-                         -->
-                        <startupFeature>config</startupFeature>
-                        <startupFeature>decanter-collector-log-socket</startupFeature>
-                        <startupFeature>decanter-collector-log</startupFeature>
-                        <startupFeature>decanter-appender-kafka</startupFeature>
-                        <startupFeature>decanter-simple-scheduler</startupFeature>
+                        <startupFeature>http</startupFeature>
+<!-- 
+                        <startupFeature>decanter-collector-kafka</startupFeature>
+                                                 -->
+                        <startupFeature>elasticsearch</startupFeature>
+                        <startupFeature>decanter-appender-elasticsearch</startupFeature>
+                        <startupFeature>kibana</startupFeature>
                     </startupFeatures>
+                    <startupBundles>
+                        <startupBundle>mvn:org.apache.felix/org.apache.felix.fileinstall/3.5.4</startupBundle>
+                    </startupBundles>
                     <framework>felix</framework>
                     <archiveZip>false</archiveZip>
                     <archiveTarGz>false</archiveTarGz>
