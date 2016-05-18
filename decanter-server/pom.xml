@@ -17,7 +17,7 @@
     <dependencies>
         <dependency>
             <groupId>org.apache.karaf.features</groupId>
-            <artifactId>static</artifactId>
+            <artifactId>framework</artifactId>
             <type>kar</type>
             <version>${karaf.version}</version>
         </dependency>
@@ -26,7 +26,7 @@
             <artifactId>framework</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
-            <scope>compile</scope>
+            <scope>runtime</scope>
             <version>${karaf.version}</version>
         </dependency>
         <dependency>
@@ -34,7 +34,7 @@
             <artifactId>standard</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
-            <scope>compile</scope>
+            <scope>runtime</scope>
             <version>${karaf.version}</version>
         </dependency>
         <dependency>
@@ -42,13 +42,20 @@
             <artifactId>apache-karaf-decanter</artifactId>
             <classifier>features</classifier>
             <type>xml</type>
-            <scope>compile</scope>
-            <version>1.1.0</version>
+            <scope>runtime</scope>
+            <version>1.1.1-SNAPSHOT</version>
         </dependency>
+<!--         <dependency> -->
+<!--             <groupId>org.apache.camel.karaf</groupId> -->
+<!--             <artifactId>apache-camel</artifactId> -->
+<!--             <classifier>features</classifier> -->
+<!--             <type>xml</type> -->
+<!--             <scope>compile</scope> -->
+<!--             <version>2.13.4</version> -->
+<!--         </dependency> -->
     </dependencies>
 
     <build>
-        <finalName>decanter-agent</finalName>
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
@@ -88,24 +95,20 @@
                 </executions>
                 <configuration>
                     <javase>1.8</javase>
-                    <startupFeatures>
-                        <startupFeature>jaas</startupFeature>
-                        <startupFeature>bundle</startupFeature>
-                        <startupFeature>config</startupFeature>
-                        <startupFeature>log</startupFeature>
-                        <startupFeature>shell</startupFeature>
-                        <startupFeature>service</startupFeature>
-                        <startupFeature>http</startupFeature>
-<!-- 
-                        <startupFeature>decanter-collector-kafka</startupFeature>
-                                                 -->
-                        <startupFeature>elasticsearch</startupFeature>
-                        <startupFeature>decanter-appender-elasticsearch</startupFeature>
-                        <startupFeature>kibana</startupFeature>
-                    </startupFeatures>
-                    <startupBundles>
-                        <startupBundle>mvn:org.apache.felix/org.apache.felix.fileinstall/3.5.4</startupBundle>
-                    </startupBundles>
+                    <bootFeatures>
+                        <bootFeature>jaas</bootFeature>
+                        <bootFeature>bundle</bootFeature>
+                        <bootFeature>config</bootFeature>
+                        <bootFeature>log</bootFeature>
+                        <bootFeature>shell</bootFeature>
+                        <bootFeature>service</bootFeature>
+                        <bootFeature>http</bootFeature>
+                        <bootFeature>decanter-common</bootFeature>
+                        <bootFeature>decanter-collector-kafka</bootFeature>
+                        <bootFeature>elasticsearch/2.2.0</bootFeature>
+                        <bootFeature>decanter-appender-elasticsearch</bootFeature>
+                        <bootFeature>kibana</bootFeature>
+                    </bootFeatures>
                     <framework>felix</framework>
                     <archiveZip>false</archiveZip>
                     <archiveTarGz>false</archiveTarGz>
