@@ -1,3 +1,9 @@
+decanter-agent:
+    build: decanter-agent/.
+    ports:
+      - "4560:4560"
+    links:
+      - kafka
 decanter-server:
     build: decanter-server/.
     ports:
