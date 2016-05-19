@@ -88,14 +88,13 @@
                 <configuration>
                     <javase>1.8</javase>
                     <startupFeatures>
-                    <!-- 
                         <startupFeature>jaas</startupFeature>
                         <startupFeature>bundle</startupFeature>
                         <startupFeature>config</startupFeature>
                         <startupFeature>log</startupFeature>
                         <startupFeature>shell</startupFeature>
                         <startupFeature>service</startupFeature>
-                         -->
+
                         <startupFeature>config</startupFeature>
                         <startupFeature>decanter-collector-log-socket</startupFeature>
                         <startupFeature>decanter-collector-log</startupFeature>
