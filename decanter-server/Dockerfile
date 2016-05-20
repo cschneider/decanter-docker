@@ -1,4 +1,4 @@
-FROM jeanblanchard/busybox-java:8
+FROM jeanblanchard/java
 ADD target/assembly /decanter/
 WORKDIR /decanter
 ENTRYPOINT ["sh", "bin/karaf"]

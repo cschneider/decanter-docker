@@ -7,5 +7,6 @@
   <modules>
       <module>decanter-agent</module>
       <module>decanter-server</module>
+      <module>taskservice</module>
   </modules>
 </project>
