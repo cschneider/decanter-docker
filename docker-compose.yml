@@ -7,6 +7,7 @@ services:
     - 4560:4560
     links:
     - kafka
+
   decanter-server:
     build: decanter-server/.
     tty: true
@@ -14,10 +15,13 @@ services:
     - 8181:8181
     links:
     - kafka
+    - elasticsearch
+
   zookeeper:
     image: wurstmeister/zookeeper
     ports: 
     - 2181:2181
+
   kafka:
     image: wurstmeister/kafka
     ports:
@@ -29,3 +33,19 @@ services:
       KAFKA_ZOOKEEPER_CONNECT: zk:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
+
+  kibana:
+    image: kibana:4.5.1
+    environment:
+      - ELASTICSEARCH_URL=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    links:
+      - elasticsearch
+
+  elasticsearch:
+    image: elasticsearch:2.3.2
+    environment:
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+    ports:
+      - "9200:9200"
