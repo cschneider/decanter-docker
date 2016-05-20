@@ -98,7 +98,7 @@
                         <startupFeature>config</startupFeature>
                         <startupFeature>decanter-collector-log-socket</startupFeature>
                         <startupFeature>decanter-appender-log</startupFeature>
-                        <!-- <startupFeature>decanter-appender-kafka</startupFeature> -->
+                        <startupFeature>decanter-appender-kafka</startupFeature>
                     </startupFeatures>
                     <framework>felix</framework>
                     <archiveZip>false</archiveZip>
