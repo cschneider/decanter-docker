@@ -43,7 +43,7 @@
             <classifier>features</classifier>
             <type>xml</type>
             <scope>compile</scope>
-            <version>1.1.0</version>
+            <version>1.1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -97,9 +97,8 @@
 
                         <startupFeature>config</startupFeature>
                         <startupFeature>decanter-collector-log-socket</startupFeature>
-                        <startupFeature>decanter-collector-log</startupFeature>
-                        <startupFeature>decanter-appender-kafka</startupFeature>
-                        <startupFeature>decanter-simple-scheduler</startupFeature>
+                        <startupFeature>decanter-appender-log</startupFeature>
+                        <!-- <startupFeature>decanter-appender-kafka</startupFeature> -->
                     </startupFeatures>
                     <framework>felix</framework>
                     <archiveZip>false</archiveZip>

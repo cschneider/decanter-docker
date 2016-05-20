@@ -1,4 +1,5 @@
-FROM jeanblanchard/busybox-java:8
+FROM jeanblanchard/java
+RUN apk add --update bash && rm -rf /var/cache/apk/*
 ADD target/assembly /decanter/
 WORKDIR /decanter
-ENTRYPOINT ["sh", "bin/karaf"]
+ENTRYPOINT ["bin/karaf", "console"]

@@ -116,6 +116,7 @@
                         <feature>system</feature>
                         <feature>decanter-collector-kafka</feature>
                         <feature>elasticsearch/2.2.0</feature>
+                        <feature>decanter-appender-log</feature>
                         <feature>decanter-appender-elasticsearch</feature>
                         <feature>kibana</feature>
                     </bootFeatures>

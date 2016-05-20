@@ -3,9 +3,10 @@ Create docker images for decanter agents and servers as well as for kafka broker
 
 # Build
 mvn clean install
+docker-compose build
 
-# Create docker image, start kafka server and decanter-agent
-docker-compose up
+# Start kafka server, decanter-agent and decanter-server
+docker-compose up --force-recreate
 
 # To Do
 Decanter is currently missing a kafka collector. So it is not yet possible to run a full demo

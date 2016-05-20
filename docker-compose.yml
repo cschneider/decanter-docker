@@ -1,16 +1,25 @@
-decanter-agent:
+version: '2'
+services:
+  decanter-agent:
     build: decanter-agent/.
+    tty: true
     ports:
     - 4560:4560
     links:
     - kafka
-decanter-server:
-    build: decanter-server/.
-    ports:
-    - 8181:8181
-    links:
-    - kafka
-kafka:
+#  decanter-server:
+#    build: decanter-server/.
+#    tty: true
+#    ports:
+#    - 8181:8181
+#    links:
+#    - kafka
+  kafka:
     image: spotify/kafka
+    environment: 
+      ADVERTISED_HOST: kafka
+      ADVERTISED_PORT: 9092
     ports:
+    - 2181:2181
     - 9092:9092
+ 
