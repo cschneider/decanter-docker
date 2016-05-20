@@ -1,5 +1,12 @@
 version: '2'
 services:
+  taskservice:
+    build: taskservice/.
+    links:
+    - decanter-agent
+    ports:
+    - 8080:8080
+
   decanter-agent:
     build: decanter-agent/.
     tty: true
