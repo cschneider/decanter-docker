@@ -12,10 +12,9 @@ KAFKA_ADVERTISED_HOST_NAME: 192.168.0.108
 # Start kafka, decanter-agent and decanter-server, es and kibana
 	docker-compose up
 
-# Start Spring boot app
-	cd taskservice
-	mvn spring-boot:run
-
+# restart taskservice to create some logs
+	docker-compose stop taskservice
+	docker-compose start taskservice
 This should write some data into ES.
 
 # Start kibana
