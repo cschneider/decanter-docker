@@ -7,19 +7,25 @@ services:
     - 4560:4560
     links:
     - kafka
-#  decanter-server:
-#    build: decanter-server/.
-#    tty: true
-#    ports:
-#    - 8181:8181
-#    links:
-#    - kafka
-  kafka:
-    image: spotify/kafka
-    environment: 
-      ADVERTISED_HOST: kafka
-      ADVERTISED_PORT: 9092
+  decanter-server:
+    build: decanter-server/.
+    tty: true
     ports:
+    - 8181:8181
+    links:
+    - kafka
+  zookeeper:
+    image: wurstmeister/zookeeper
+    ports: 
     - 2181:2181
+  kafka:
+    image: wurstmeister/kafka
+    ports:
     - 9092:9092
- 
+    links: 
+    - zookeeper:zk
+    environment:
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.0.108
+      KAFKA_ZOOKEEPER_CONNECT: zk:2181
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
