@@ -118,7 +118,6 @@
                         <feature>elasticsearch/2.2.0</feature>
                         <feature>decanter-appender-log</feature>
                         <feature>decanter-appender-elasticsearch</feature>
-                        <feature>kibana</feature>
                     </bootFeatures>
                     <libraries>
                         <library>mvn:org.apache.servicemix.specs/org.apache.servicemix.specs.jaxp-api-1.4/${servicemix.specs.version};type:=endorsed;export:=true</library>
