@@ -1,8 +1,6 @@
 <configuration>
 
-  <appender name="DECANTER" class="net.lr.tasklist.persistence.impl.LogbackDecanterAppender">
-    <!-- encoders are assigned the type
-         ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
+  <appender name="DECANTER" class="org.talend.decanter.connect.LogbackDecanterAppender">
     <encoder>
       <pattern>%-4relative [%thread] %-5level %logger{35} - %msg %n</pattern>
     </encoder>

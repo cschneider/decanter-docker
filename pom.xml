@@ -7,7 +7,7 @@
   <modules>
       <module>decanter-agent</module>
       <module>decanter-server</module>
+      <module>spring-boot-starter-decanter</module>
       <module>taskservice</module>
-      
   </modules>
 </project>

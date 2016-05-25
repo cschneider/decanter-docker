@@ -1,13 +1,9 @@
 package org.talend.decanter.connect;
 
 import java.net.InetAddress;
-import java.util.Dictionary;
-import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.osgi.service.component.ComponentContext;
-import org.osgi.service.component.annotations.Activate;
 import org.osgi.service.event.Event;
 import org.osgi.service.event.EventAdmin;
 import org.slf4j.Logger;
@@ -19,7 +15,7 @@ import ch.qos.logback.core.AppenderBase;
 
 public class LogbackDecanterAppender extends AppenderBase<ILoggingEvent> {
     private static final String MDC_IN_LOG_APPENDER = "inLogAppender";
-    private final static String[] ignoredCategories = {"org.apache.karaf.decanter"};
+    private final static String[] ignoredCategories = {"org.apache.karaf.decanter", "org.apache.kafka", "org.talend.decanter.connect"};
     private final static Logger LOGGER = LoggerFactory.getLogger(LogbackDecanterAppender.class);
 
     private static EventAdmin dispatcher;
@@ -41,7 +37,7 @@ public class LogbackDecanterAppender extends AppenderBase<ILoggingEvent> {
 
     private void appendInternal(ILoggingEvent event) throws Exception {
         if (isIgnored(event.getLoggerName())) {
-            LOGGER.debug("{} logger is ignored by the log collector", event.getLoggerName());
+            LOGGER.trace("{} logger is ignored by the log collector", event.getLoggerName());
             return;
         }
 
@@ -68,17 +64,9 @@ public class LogbackDecanterAppender extends AppenderBase<ILoggingEvent> {
             loggerName = "default";
         }
         String topic = "decanter/collect/log/" + loggerName.replace(".", "/").replace(" ", "_").replace("{", "_").replace("}", "_").replace("$", "_");
-        if (this.dispatcher != null) {
-            this.dispatcher.postEvent(new Event(topic, data));
+        if (dispatcher != null) {
+            dispatcher.postEvent(new Event(topic, data));
         }
-    }
-
-    private Object join(String[] throwableAr) {
-        StringBuilder builder = new StringBuilder();
-        for (String line : throwableAr) {
-            builder.append(line).append("\n");
-        }
-        return builder.toString();
     }
 
     private boolean isIgnored(String loggerName) {
