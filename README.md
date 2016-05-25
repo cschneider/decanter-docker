@@ -21,3 +21,10 @@ This should write some data into ES.
 http://localhost:5601
 
 Set the index name to "karaf-*" and discover the logs.
+
+
+# Debugging
+
+For debugging you can use a command line kafka consumer. This allows to check the pipeline up to kafka is working:
+
+	bin/kafka-console-consumer.sh --zookeeper localhost:2181 --bootstrap-server localhost:9092  --topic decanter
