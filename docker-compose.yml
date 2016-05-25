@@ -3,7 +3,7 @@ services:
   taskservice:
     build: taskservice/.
     links:
-    - decanter-agent
+    - kafka
     ports:
     - 8080:8080
 
