@@ -49,6 +49,7 @@ public class DecanterConnect {
         List<BundleDescriptor> bundles = new ClasspathScanner().scanForBundles(filter);
         bundles.stream().forEach(desc -> System.out.println(desc.getHeaders().get(Constants.BUNDLE_SYMBOLICNAME)));
         pojoSrConfig.put(PojoServiceRegistryFactory.BUNDLE_DESCRIPTORS, bundles);
+        System.out.println(bundles.size());
         pojoSrConfig.put("felix.cm.dir", "config");
         PojoServiceRegistry registry = srFactory.newPojoServiceRegistry( pojoSrConfig );
         Dictionary<String, String> kafka = new Hashtable<>();
