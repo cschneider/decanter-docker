@@ -34,9 +34,9 @@
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.talend.decanter</groupId>
+            <groupId>org.apache.karaf.decanter</groupId>
             <artifactId>spring-boot-starter-decanter</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
+            <version>1.1.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
 

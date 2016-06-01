@@ -1,6 +1,6 @@
 <configuration>
 
-  <appender name="DECANTER" class="org.talend.decanter.connect.LogbackDecanterAppender">
+  <appender name="DECANTER" class="org.apache.karaf.decanter.boot.LogbackDecanterAppender">
   </appender>
 
   <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">

@@ -36,7 +36,7 @@ services:
     links: 
     - zookeeper:zk
     environment:
-      KAFKA_ADVERTISED_HOST_NAME: 192.168.0.108
+      KAFKA_ADVERTISED_HOST_NAME: 192.168.200.200
       KAFKA_ZOOKEEPER_CONNECT: zk:2181
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
