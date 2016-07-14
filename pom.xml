@@ -8,5 +8,7 @@
       <module>decanter-agent</module>
       <module>decanter-server</module>
       <module>taskservice</module>
+      <module>taskservice-jmslog</module>
+      <module>activemq-cf</module>
   </modules>
 </project>

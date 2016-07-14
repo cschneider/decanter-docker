@@ -28,3 +28,7 @@ Set the index name to "karaf-*" and discover the logs.
 For debugging you can use a command line kafka consumer. This allows to check the pipeline up to kafka is working:
 
 	bin/kafka-console-consumer.sh --zookeeper localhost:2181 --bootstrap-server localhost:9092  --topic decanter
+
+To test kafka itself try to send some messages and check they appear on the consumer above:
+
+	bin/kafka-console-producer.sh --broker-list kafka:9092 --topic decanter
