@@ -6,5 +6,6 @@ org.apache.felix.fileinstall
 org.apache.karaf.decanter.api
 org.apache.geronimo.specs.geronimo-jms_1.1_spec
 org.apache.karaf.decanter.marshaller.json
-org.apache.karaf.decanter.appender.jms
+org.apache.activemq.activemq-jms-pool
 activemq-cf
+org.apache.karaf.decanter.appender.jms

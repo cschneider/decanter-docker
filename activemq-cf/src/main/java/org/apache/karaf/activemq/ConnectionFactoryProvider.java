@@ -6,6 +6,7 @@ import java.util.Hashtable;
 import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.apache.activemq.jms.pool.PooledConnectionFactory;
 import org.osgi.framework.BundleContext;
 import org.osgi.framework.ServiceRegistration;
 import org.osgi.service.component.ComponentContext;
@@ -33,14 +34,22 @@ public class ConnectionFactoryProvider {
         String jndiName = getString(config, OSGI_JNDI_SERVICE_NAME, "jms/local");
         String userName = getString(config, "userName", null);
         String password = getString(config, "password", null);
+        long expiryTimeout = new Long(getString(config, "expiryTimeout", "0"));
+        int idleTimeout = new Integer(getString(config, "idleTimeout", "30000"));
+        int maxConnections = new Integer(getString(config, "maxConnections", "8"));
         ActiveMQConnectionFactory cf = new ActiveMQConnectionFactory(brokerURL);
         if (userName != null) {
             cf.setUserName(userName);
             cf.setPassword(password);
         }
+        PooledConnectionFactory pcf = new PooledConnectionFactory();
+        pcf.setConnectionFactory(cf);
+        pcf.setExpiryTimeout(expiryTimeout);
+        pcf.setIdleTimeout(idleTimeout);
+        pcf.setMaxConnections(maxConnections);
         Dictionary<String, String> props = new Hashtable<String, String>();
         props.put(OSGI_JNDI_SERVICE_NAME, jndiName);
-        reg = context.registerService(ConnectionFactory.class, cf, props);
+        reg = context.registerService(ConnectionFactory.class, pcf, props);
     }
     
     @Deactivate
